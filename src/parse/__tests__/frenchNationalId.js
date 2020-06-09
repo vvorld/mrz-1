@@ -54,4 +54,33 @@ describe('parse French National Id', () => {
       compositeCheckDigit: '4'
     });
   });
+
+
+  it('valid id card', function () {
+    const MRZ = [
+      'RPESTBB00308371<<<<<<<<<<<<<<<',
+      '8511294M2204053RUS<<<<<<<<<<<2',
+      'POPOV<<VLADIMIR<<<<<<<<<<<<<<<',
+    ];
+    var result = parse(MRZ);
+    // expect(result.valid).toEqual(true);
+    expect(result.details.filter((a) => !a.valid)).toHaveLength(0);
+    expect(result.fields).toEqual({
+      "birthDate": "851129",
+       "birthDateCheckDigit": "4",
+       "compositeCheckDigit": "2",
+       "documentCode": "RP",
+       "documentNumber": "BB0030837",
+        "documentNumberCheckDigit": "1",
+        "expirationDate": "220405",
+        "expirationDateCheckDigit": "3",
+        "firstName": "VLADIMIR",
+        "issuingState": "EST",
+        "lastName": "POPOV",
+        "nationality": "RUS",
+        "optional1": "",
+        "optional2": "",
+        "sex": "male",
+        });
+  });
 });
