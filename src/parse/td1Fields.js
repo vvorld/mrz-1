@@ -3,6 +3,7 @@
 const parseDocumentCode = require('../parsers/parseDocumentCodeId');
 const parseOptional = require('../parsers/parseOptional');
 const parseDocumentNumberOptional = require('../parsers/parseDocumentNumberOptional');
+
 const {
   documentCodeTemplate,
   issuingStateTemplate,

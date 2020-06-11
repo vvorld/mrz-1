@@ -1,13 +1,14 @@
 'use strict';
 
-const checkLines = require('./checkLines');
 const formats = require('../formats');
+
+const checkLines = require('./checkLines');
 const parsers = require('./parsers');
 
 function parseMRZ(lines) {
   lines = checkLines(lines);
   switch (lines.length) {
-    case 1:{
+    case 1: {
       if (lines[0].match(/^D[1PN<][0-9A-Z<]{27}[0-9]$/)) {
         if (lines[0].match(/^D[1PN<]FRA/)) {
           return parsers.FRENCH_DRIVING_LICENSE(lines);
@@ -15,8 +16,11 @@ function parseMRZ(lines) {
         if (lines[0].match(/^D[1PN<]EST/)) {
           return parsers.ESTONIAN_DRIVING_LICENSE(lines);
         }
+        if (lines[0].match(/^D[1PN<][A-Z<]{12}IRL/)) {
+          return parsers.IRELAND_DRIVING_LICENSE(lines);
+        }
         throw new Error(
-            'unsupported country'
+          'unsupported country'
         );
       }
       throw new Error(

@@ -3,13 +3,13 @@
 var check = require('../../check');
 
 module.exports = function parseDocumentNumberCheckDigit(
-    checkDigit,
-    source
+  checkDigit,
+  source
 ) {
-    if (checkDigit === '<') {
-        return checkDigit;
-    } else {
-        check(source, checkDigit);
-        return checkDigit;
-    }
+  if (checkDigit === '<') {
+    return checkDigit;
+  } else {
+    check(source, checkDigit);
+    return checkDigit;
+  }
 };

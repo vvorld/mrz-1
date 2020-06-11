@@ -3,6 +3,7 @@
 const parseDocumentCode = require('../parsers/parseDocumentCodePassport');
 const parsePersonalNumber = require('../parsers/parsePersonalNumber');
 const parsePersonalNumberCheckDigit = require('../parsers/parsePersonalNumberCheckDigit');
+
 const {
   documentCodeTemplate,
   issuingStateTemplate,

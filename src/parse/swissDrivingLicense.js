@@ -1,8 +1,9 @@
 'use strict';
 
+const { SWISS_DRIVING_LICENSE } = require('../formats');
+
 const checkLines = require('./checkLines');
 const getResult = require('./getResult');
-const { SWISS_DRIVING_LICENSE } = require('../formats');
 const swissDrivingLicenseFields = require('./swissDrivingLicenseFields');
 
 module.exports = function parseSwissDrivingLicense(lines) {
