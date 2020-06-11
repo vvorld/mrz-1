@@ -43,7 +43,8 @@ module.exports = [
         end: 14,
         parser: parseDocumentNumber
     }),
-    Object.assign({}, documentNumberCheckDigitTemplate, {
+    // TODO find algorithm for checkDigit, ignore for now
+    /*Object.assign({}, documentNumberCheckDigitTemplate, {
         line: 0,
         start: 14,
         end: 15,
@@ -54,7 +55,7 @@ module.exports = [
                 end: 14
             }
         ]
-    }),
+    }),*/
     Object.assign({}, expirationDateTemplate, {
         line: 0,
         start: 15,
