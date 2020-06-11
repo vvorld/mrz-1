@@ -8,11 +8,19 @@ function parseMRZ(lines) {
   lines = checkLines(lines);
   switch (lines.length) {
     case 1:{
-      if (lines[0].match(/^D[1PN<]FRA/)) {
-        return parsers.FRENCH_DRIVING_LICENSE(lines);
+      if (lines[0].match(/^D[1PN<][0-9A-Z<]{27}[0-9]$/)) {
+        if (lines[0].match(/^D[1PN<]FRA/)) {
+          return parsers.FRENCH_DRIVING_LICENSE(lines);
+        }
+        if (lines[0].match(/^D[1PN<]EST/)) {
+          return parsers.ESTONIAN_DRIVING_LICENSE(lines);
+        }
+        throw new Error(
+            'unsupported country'
+        );
       }
       throw new Error(
-        'unrecognized document format. Input must match pattern /^D[1PN<]FRA/ (French Driving License)'
+        'unrecognized document format. Input must match pattern /^D[1PN<][0-9A-Z<]{27}[0-9]$/ (ISO-compliant driving licence)'
       );
     }
     case 2:
