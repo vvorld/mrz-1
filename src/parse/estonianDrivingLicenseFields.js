@@ -3,18 +3,19 @@
 const parseDocumentCode = require('../parsers/euDrivingLicense/parseDocumentCode');
 const parseBapConfiguration = require('../parsers/euDrivingLicense/parseBapConfiguration');
 const parseState = require('../parsers/parseState');
-const parseDocumentNumber = require('../parsers/euDrivingLicense/france/parseDocumentNumber');
-const parseLastName = require('../parsers/euDrivingLicense/france/parseLastName');
+
+const parseDocumentNumber = require('../parsers/euDrivingLicense/estonia/parseDocumentNumber');
+const parsePersonalNumber = require('../parsers/euDrivingLicense/estonia/parsePersonalNumber');
+const parseDocumentNumberCheckDigit = require('../parsers/euDrivingLicense/estonia/parseDocumentNumberCheckDigit');
 
 const {
     documentCodeTemplate,
     bapConfigurationTemplate,
     issuingStateTemplate,
     documentNumberTemplate,
-    documentNumberCheckDigitTemplate,
-    expirationDateTemplate,
-    lastNameTemplate,
-    compositeCheckDigitTemplate
+    personalNumberTemplate,
+    compositeCheckDigitTemplate,
+    documentNumberCheckDigitTemplate
 } = require('./fieldTemplates');
 const createFieldParser = require('./createFieldParser');
 
@@ -40,32 +41,27 @@ module.exports = [
     Object.assign({}, documentNumberTemplate, {
         line: 0,
         start: 5,
-        end: 14,
+        end: 13,
         parser: parseDocumentNumber
     }),
-    // TODO find algorithm for checkDigit, ignore for now
-    /*Object.assign({}, documentNumberCheckDigitTemplate, {
+    Object.assign({}, documentNumberCheckDigitTemplate, {
         line: 0,
-        start: 14,
-        end: 15,
+        start: 13,
+        end: 14,
         related: [
             {
                 line: 0,
                 start: 5,
-                end: 14
+                end: 13
             }
-        ]
-    }),*/
-    Object.assign({}, expirationDateTemplate, {
-        line: 0,
-        start: 15,
-        end: 21
+        ],
+        parser: parseDocumentNumberCheckDigit
     }),
-    Object.assign({}, lastNameTemplate, {
+    Object.assign({}, personalNumberTemplate, {
         line: 0,
-        start: 21,
+        start: 14,
         end: 29,
-        parser: parseLastName
+        parser: parsePersonalNumber
     }),
     Object.assign({}, compositeCheckDigitTemplate, {
         line: 0,
