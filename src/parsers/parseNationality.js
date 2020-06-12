@@ -7,9 +7,9 @@ const cleanText = require('./cleanText');
 module.exports = function parseNationality(source) {
   if (source === '<<<') {
     return {
-      value: source,
+      value: '',
       start: 0,
-      end: source.length
+      end: 0
     };
   }
   source = cleanText(source);

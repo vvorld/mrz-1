@@ -131,4 +131,32 @@ describe('parse TD1', () => {
       value: '0'
     });
   });
+
+  it('Not filled nationality example', () => {
+    const MRZ = [
+      'I<UTOD231458907ABC<<<<<<<<<<<<',
+      '7408122F1204159<<<<<<<<<<<<<<1',
+      'ERIKSSON<<ANNA<MARIA<<<<<<<<<<'
+    ];
+
+    const result = parse(MRZ);
+    expect(result.details.filter((a) => !a.valid)).toHaveLength(1);
+    expect(result.fields).toStrictEqual({
+      firstName: 'ANNA MARIA',
+      lastName: 'ERIKSSON',
+      nationality: '',
+      issuingState: null,
+      documentCode: 'I',
+      documentNumber: 'D23145890',
+      documentNumberCheckDigit: '7',
+      birthDate: '740812',
+      birthDateCheckDigit: '2',
+      expirationDate: '120415',
+      expirationDateCheckDigit: '9',
+      sex: 'female',
+      optional1: 'ABC',
+      optional2: '',
+      compositeCheckDigit: '1'
+    });
+  });
 });

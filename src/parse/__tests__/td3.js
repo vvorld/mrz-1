@@ -88,4 +88,37 @@ describe('parse TD3', () => {
       compositeCheckDigit: '0'
     });
   });
+
+  it('not filled nationality example', function () {
+    const MRZ = [
+      'P<UTOERIKSSON<<ANNA<MARIA<<<<<<<<<<<<<<<<<<<',
+      'L898902C36<<<7408122F1204159ZE184226B<<<<<10'
+    ];
+
+    const result = parse(MRZ);
+    expect(result).toMatchObject({
+      valid: false,
+      format: 'TD3'
+    });
+    expect(result.valid).toBe(false);
+    const errors = result.details.filter((a) => !a.valid);
+    expect(errors).toHaveLength(1);
+    expect(result.fields).toStrictEqual({
+      documentCode: 'P',
+      firstName: 'ANNA MARIA',
+      lastName: 'ERIKSSON',
+      documentNumber: 'L898902C3',
+      documentNumberCheckDigit: '6',
+      nationality: '',
+      sex: 'female',
+      expirationDate: '120415',
+      expirationDateCheckDigit: '9',
+      personalNumber: 'ZE184226B',
+      personalNumberCheckDigit: '1',
+      birthDate: '740812',
+      birthDateCheckDigit: '2',
+      issuingState: null,
+      compositeCheckDigit: '0'
+    });
+  });
 });
