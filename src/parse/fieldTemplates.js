@@ -20,7 +20,7 @@ const documentCodeTemplate = {
 const nationalityTemplate = {
   label: 'Nationality',
   field: 'nationality',
-  parser: require('../parsers/parseState')
+  parser: require('../parsers/parseNationality')
 };
 
 const sexTemplate = {
