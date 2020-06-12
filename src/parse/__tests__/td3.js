@@ -17,7 +17,7 @@ describe('parse TD3', () => {
     expect(result.valid).toBe(false);
     const errors = result.details.filter((a) => !a.valid);
     expect(errors).toHaveLength(2);
-    expect(result.fields).toEqual({
+    expect(result.fields).toStrictEqual({
       documentCode: 'P',
       firstName: 'ANNA MARIA',
       lastName: 'ERIKSSON',
@@ -38,7 +38,7 @@ describe('parse TD3', () => {
     const personalNumberDetails = result.details.find(
       (d) => d.field === 'personalNumber'
     );
-    expect(personalNumberDetails).toEqual({
+    expect(personalNumberDetails).toStrictEqual({
       label: 'Personal number',
       field: 'personalNumber',
       value: 'ZE184226B',
@@ -49,7 +49,7 @@ describe('parse TD3', () => {
       end: 37
     });
 
-    expect(errors[0]).toEqual({
+    expect(errors[0]).toStrictEqual({
       label: 'Issuing state',
       field: 'issuingState',
       value: null,
@@ -70,7 +70,7 @@ describe('parse TD3', () => {
 
     const result = parse.TD3(MRZ);
     expect(result.valid).toBe(true);
-    expect(result.fields).toEqual({
+    expect(result.fields).toStrictEqual({
       documentCode: 'P',
       issuingState: 'D',
       lastName: 'MUSTERMANN',

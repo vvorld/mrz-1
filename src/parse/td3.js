@@ -1,8 +1,9 @@
 'use strict';
 
+const { TD3 } = require('../formats');
+
 const checkLines = require('./checkLines');
 const getResult = require('./getResult');
-const { TD3 } = require('../formats');
 const TD3Fields = require('./td3Fields');
 
 module.exports = function parseTD3(lines) {

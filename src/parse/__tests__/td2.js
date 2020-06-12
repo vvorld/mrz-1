@@ -16,7 +16,7 @@ describe('parse TD2', () => {
       valid: false
     });
     expect(failed).toHaveLength(2);
-    expect(result.fields).toEqual({
+    expect(result.fields).toStrictEqual({
       firstName: 'ANNA MARIA',
       lastName: 'ERIKSSON',
       nationality: null,
@@ -32,6 +32,6 @@ describe('parse TD2', () => {
       compositeCheckDigit: '6',
       optional: ''
     });
-    expect(result.valid).toEqual(false);
+    expect(result.valid).toStrictEqual(false);
   });
 });

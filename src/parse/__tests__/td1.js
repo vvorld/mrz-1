@@ -15,7 +15,7 @@ describe('parse TD1', () => {
       format: 'TD1',
       valid: true
     });
-    expect(result.fields).toEqual({
+    expect(result.fields).toStrictEqual({
       documentCode: 'ID',
       issuingState: 'CHE',
       documentNumber: 'A1234567',
@@ -53,7 +53,7 @@ describe('parse TD1', () => {
 
     const result = parse(MRZ);
     expect(result.details.filter((a) => !a.valid)).toHaveLength(2);
-    expect(result.fields).toEqual({
+    expect(result.fields).toStrictEqual({
       firstName: 'ANNA MARIA',
       lastName: 'ERIKSSON',
       nationality: null,
@@ -70,10 +70,10 @@ describe('parse TD1', () => {
       optional2: '',
       compositeCheckDigit: '1'
     });
-    expect(result.valid).toEqual(false);
+    expect(result.valid).toStrictEqual(false);
     expect(
       result.details.find((a) => a.field === 'issuingState').valid
-    ).toEqual(false);
+    ).toStrictEqual(false);
 
     const optional1 = result.details.find((a) => a.field === 'optional1');
     expect(optional1).toMatchObject({
@@ -104,7 +104,7 @@ describe('parse TD1', () => {
     const documentNumberDetails = result.details.find(
       (d) => d.field === 'documentNumber'
     );
-    expect(documentNumberDetails).toEqual({
+    expect(documentNumberDetails).toStrictEqual({
       label: 'Document number',
       field: 'documentNumber',
       value: 'D23145890124',
@@ -118,8 +118,8 @@ describe('parse TD1', () => {
       start: 5,
       end: 18
     });
-    expect(result.fields.documentNumber).toEqual('D23145890124');
-    expect(result.fields.documentNumberCheckDigit).toEqual('0');
+    expect(result.fields.documentNumber).toStrictEqual('D23145890124');
+    expect(result.fields.documentNumberCheckDigit).toStrictEqual('0');
 
     const documentNumberCheckDigitDetails = result.details.find(
       (d) => d.field === 'documentNumberCheckDigit'

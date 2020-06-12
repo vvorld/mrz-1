@@ -46,6 +46,9 @@ String identifying the format of the parsed MRZ. Supported formats are:
 * TD3 (passport)
 * SWISS_DRIVING_LICENSE
 * FRENCH_NATIONAL_ID
+* FRENCH_DRIVING_LICENSE
+* ESTONIAN_DRIVING_LICENSE
+* IRELAND_DRIVING_LICENSE
 
 #### result.valid
 

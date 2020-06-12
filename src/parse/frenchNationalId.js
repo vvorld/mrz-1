@@ -1,8 +1,9 @@
 'use strict';
 
+const { FRENCH_NATIONAL_ID } = require('../formats');
+
 const checkLines = require('./checkLines');
 const getResult = require('./getResult');
-const { FRENCH_NATIONAL_ID } = require('../formats');
 const frenchNationalIdFields = require('./frenchNationalIdFields');
 
 module.exports = function parseFrenchNationalId(lines) {
