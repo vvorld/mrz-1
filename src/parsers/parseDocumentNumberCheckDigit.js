@@ -12,7 +12,11 @@ module.exports = function parseDocumentNumberCheckDigit(
     const tail = optional.substring(0, firstFiller - 1);
     source = `${source}<${tail}`;
     checkDigit = optional.charAt(firstFiller - 1);
-    check(source, checkDigit);
+    try {
+      check(source, checkDigit);
+    } catch (e) {
+      check(source.replace(/</g, ''), checkDigit);
+    }
     return {
       value: checkDigit,
       start: firstFiller,

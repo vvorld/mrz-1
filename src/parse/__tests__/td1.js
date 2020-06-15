@@ -170,4 +170,15 @@ describe('parse TD1', () => {
     expect(result.fields.firstName).toStrictEqual('L7DMILA PETROVNA');
     expect(result.fields.lastName).toStrictEqual('KOZLOVSKA8');
   });
+
+  it('space in document number', () => {
+    const MRZ = [
+      'I<UTO592988362<0804<<<<<<<<<<<',
+      '7408122F1204159UTO<<<<<<<<<<<8',
+      'ERIKSSON<<ANNA<MARIA<<<<<<<<<<'
+    ];
+    const result = parse(MRZ);
+    expect(result.fields.documentNumber).toStrictEqual('592988362080');
+    expect(result.fields.documentNumberCheckDigit).toStrictEqual('4');
+  });
 });
