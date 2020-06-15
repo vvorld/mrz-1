@@ -159,4 +159,15 @@ describe('parse TD1', () => {
       compositeCheckDigit: '1'
     });
   });
+
+  it('digits in names', () => {
+    const MRZ = [
+      'I<UTOD23145890<1240<XYZ<<<<<<<',
+      '7408122F1204159UTO<<<<<<<<<<<8',
+      'KOZLOVSKA8<<L7DMILA<PETROVNA<<'
+    ];
+    const result = parse(MRZ);
+    expect(result.fields.firstName).toStrictEqual('L7DMILA PETROVNA');
+    expect(result.fields.lastName).toStrictEqual('KOZLOVSKA8');
+  });
 });

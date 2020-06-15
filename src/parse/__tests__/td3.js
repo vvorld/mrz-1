@@ -121,4 +121,14 @@ describe('parse TD3', () => {
       compositeCheckDigit: '0'
     });
   });
+
+  it('digits in names', () => {
+    const MRZ = [
+      'P<UTOKOZLOVSKA8<<L7DMILA<PETROVNA<<<<<<<<<<<',
+      'L898902C36<<<7408122F1204159ZE184226B<<<<<10'
+    ];
+    const result = parse(MRZ);
+    expect(result.fields.firstName).toStrictEqual('L7DMILA PETROVNA');
+    expect(result.fields.lastName).toStrictEqual('KOZLOVSKA8');
+  });
 });

@@ -7,7 +7,7 @@ module.exports = function parseSex(source) {
     case 'F':
       return 'female';
     case '<':
-      return 'nonspecified';
+      return '';
     default:
       throw new Error(`invalid sex: ${source}. Must be M, F or <.`);
   }

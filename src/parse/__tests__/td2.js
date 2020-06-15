@@ -66,4 +66,14 @@ describe('parse TD2', () => {
     });
     expect(result.valid).toStrictEqual(false);
   });
+
+  it('digits in names', () => {
+    const MRZ = [
+      'I<UTOKOZLOVSKA8<<L7DMILA<PETROVNA<<<',
+      'D231458907<<<7408122F1204159<<<<<<<6'
+    ];
+    const result = parse(MRZ);
+    expect(result.fields.firstName).toStrictEqual('L7DMILA PETROVNA');
+    expect(result.fields.lastName).toStrictEqual('KOZLOVSKA8');
+  });
 });
