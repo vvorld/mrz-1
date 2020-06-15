@@ -19,6 +19,9 @@ function parseMRZ(lines) {
         if (lines[0].match(/^D[1PN<][A-Z<]{12}IRL/)) {
           return parsers.IRELAND_DRIVING_LICENSE(lines);
         }
+        if (lines[0].match(/^D[1PN<]NLD/)) {
+          return parsers.NETHERLANDS_DRIVING_LICENSE(lines);
+        }
         throw new Error(
           'unsupported country'
         );
