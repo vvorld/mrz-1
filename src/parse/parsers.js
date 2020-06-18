@@ -9,6 +9,7 @@ const parseFrenchDrivingLicense = require('./frenchDrivingLicense');
 const parseEstonianDrivingLicense = require('./estonianDrivingLicense');
 const parseIrelandDrivingLicense = require('./irelandDrivingLicense');
 const parseNetherlandsDrivingLicense = require('./netherlandsDrivingLicense');
+const parseBotswanaTD1 = require('./botswanaTD1');
 
 module.exports = {
   TD1: parseTD1,
@@ -19,5 +20,6 @@ module.exports = {
   FRENCH_DRIVING_LICENSE: parseFrenchDrivingLicense,
   ESTONIAN_DRIVING_LICENSE: parseEstonianDrivingLicense,
   IRELAND_DRIVING_LICENSE: parseIrelandDrivingLicense,
-  NETHERLANDS_DRIVING_LICENSE: parseNetherlandsDrivingLicense
+  NETHERLANDS_DRIVING_LICENSE: parseNetherlandsDrivingLicense,
+  BOTSWANA_TD1: parseBotswanaTD1,
 };
