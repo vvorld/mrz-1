@@ -34,7 +34,7 @@ function parseMRZ(lines) {
     case 3: {
       switch (lines[0].length) {
         case 30:
-          if (lines[0].match(/^[A-Z]{2}BWA/)) {
+          if (lines[0].match(/^[ACI].BWA/)) {
             return parsers.BOTSWANA_TD1(lines);
           }
           return parsers.TD1(lines);
