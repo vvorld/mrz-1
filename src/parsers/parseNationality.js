@@ -12,7 +12,7 @@ module.exports = function parseNationality(source) {
       end: 0
     };
   }
-  source = cleanText(source);
+  source = cleanText(source).replace(/0/g, 'O');
   var state = STATES[source];
   if (!state) {
     throw new Error(`invalid state code: ${source}`);

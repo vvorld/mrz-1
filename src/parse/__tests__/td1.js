@@ -181,4 +181,22 @@ describe('parse TD1', () => {
     expect(result.fields.documentNumber).toStrictEqual('592988362080');
     expect(result.fields.documentNumberCheckDigit).toStrictEqual('4');
   });
+
+  it('empty expiration date', () => {
+    const MRZ = [
+      'PNRUSAAAAAAA<<AAAAAA<AAAAAAAAAA<<<<<<<<<<<<<',
+      '1111111113RUS0202022M<<<<<<<1111111111111<14',
+    ];
+    const result = parse(MRZ);
+    expect(result.valid).toStrictEqual(true);
+  });
+
+  it('zero in nationality', () => {
+    const MRZ = [
+      'IDROUAAAAAAAA<<AAAAAA<AAAAAA<<<<<<<<',
+      'C1111111<1R0U1111111M111111111111111',
+    ];
+    const result = parse(MRZ);
+    expect(result.fields.nationality).toStrictEqual('ROU');
+  });
 });
