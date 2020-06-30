@@ -6,7 +6,7 @@ const checkLines = require('./checkLines');
 const getResult = require('./getResult');
 const croatiaDrivingLicenseFields = require('./croatiaDrivingLicenseFields');
 
-module.exports = function parseEstonianDrivingLicense(lines) {
+module.exports = function parseCroatiaDrivingLicense(lines) {
   lines = checkLines(lines);
   if (lines.length !== 1) {
     throw new Error(
