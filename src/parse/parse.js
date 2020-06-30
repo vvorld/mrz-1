@@ -22,6 +22,9 @@ function parseMRZ(lines) {
         if (lines[0].match(/^D[1PN<]NLD/)) {
           return parsers.NETHERLANDS_DRIVING_LICENSE(lines);
         }
+        if (lines[0].match(/^D[1PN<][0-9<]{27}[0-9]$/)) {
+          return parsers.CROATIA_DRIVING_LICENSE(lines);
+        }
         throw new Error(
           'unsupported country'
         );
