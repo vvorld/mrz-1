@@ -1,6 +1,7 @@
 'use strict';
 
 const STATES = require('../generated/states');
+
 const cleanText = require('./cleanText');
 
 module.exports = function parseState(source) {

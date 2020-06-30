@@ -3,18 +3,14 @@
 const parseDocumentCode = require('../parsers/euDrivingLicense/parseDocumentCode');
 const parseBapConfiguration = require('../parsers/euDrivingLicense/parseBapConfiguration');
 const parseState = require('../parsers/parseState');
-const parseDocumentNumber = require('../parsers/euDrivingLicense/france/parseDocumentNumber');
-const parseLastName = require('../parsers/euDrivingLicense/parseLastName');
+const parseDocumentNumber = require('../parsers/euDrivingLicense/parseDocumentNumber');
+
 
 const {
   documentCodeTemplate,
   bapConfigurationTemplate,
   issuingStateTemplate,
   documentNumberTemplate,
-  // TODO find algorithm for checkDigit, ignore for now
-  // documentNumberCheckDigitTemplate,
-  expirationDateTemplate,
-  lastNameTemplate,
   compositeCheckDigitTemplate
 } = require('./fieldTemplates');
 const createFieldParser = require('./createFieldParser');
@@ -40,33 +36,9 @@ module.exports = [
   }),
   Object.assign({}, documentNumberTemplate, {
     line: 0,
-    start: 5,
-    end: 14,
+    start: 6,
+    end: 16,
     parser: parseDocumentNumber
-  }),
-  // TODO find algorithm for checkDigit, ignore for now
-  /* Object.assign({}, documentNumberCheckDigitTemplate, {
-        line: 0,
-        start: 14,
-        end: 15,
-        related: [
-            {
-                line: 0,
-                start: 5,
-                end: 14
-            }
-        ]
-    }),*/
-  Object.assign({}, expirationDateTemplate, {
-    line: 0,
-    start: 15,
-    end: 21
-  }),
-  Object.assign({}, lastNameTemplate, {
-    line: 0,
-    start: 21,
-    end: 29,
-    parser: parseLastName
   }),
   Object.assign({}, compositeCheckDigitTemplate, {
     line: 0,

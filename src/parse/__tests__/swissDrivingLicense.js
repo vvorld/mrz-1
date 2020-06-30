@@ -11,9 +11,9 @@ describe('parse Swiss Driving License', () => {
     ];
     var result = parse(MRZ);
     expect(result.format).toBe('SWISS_DRIVING_LICENSE');
-    expect(result.valid).toEqual(true);
+    expect(result.valid).toStrictEqual(true);
     expect(result.details.filter((a) => !a.valid)).toHaveLength(0);
-    expect(result.details[0]).toEqual({
+    expect(result.details[0]).toStrictEqual({
       label: 'Document number',
       field: 'documentNumber',
       ranges: [{ line: 0, start: 0, end: 9, raw: 'AAA001D<<' }],
@@ -23,7 +23,7 @@ describe('parse Swiss Driving License', () => {
       value: 'AAA001D',
       valid: true
     });
-    expect(result.details[result.details.length - 1]).toEqual({
+    expect(result.details[result.details.length - 1]).toStrictEqual({
       label: 'First name',
       field: 'firstName',
       value: 'FABIENNE',
@@ -40,7 +40,7 @@ describe('parse Swiss Driving License', () => {
       start: 10,
       end: 18
     });
-    expect(result.fields).toEqual({
+    expect(result.fields).toStrictEqual({
       documentNumber: 'AAA001D',
       languageCode: 'D',
       documentCode: 'FA',

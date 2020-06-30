@@ -15,7 +15,7 @@ describe('parse TD1', () => {
       format: 'TD1',
       valid: true
     });
-    expect(result.fields).toEqual({
+    expect(result.fields).toStrictEqual({
       documentCode: 'ID',
       issuingState: 'CHE',
       documentNumber: 'A1234567',
@@ -53,7 +53,7 @@ describe('parse TD1', () => {
 
     const result = parse(MRZ);
     expect(result.details.filter((a) => !a.valid)).toHaveLength(2);
-    expect(result.fields).toEqual({
+    expect(result.fields).toStrictEqual({
       firstName: 'ANNA MARIA',
       lastName: 'ERIKSSON',
       nationality: null,
@@ -70,10 +70,10 @@ describe('parse TD1', () => {
       optional2: '',
       compositeCheckDigit: '1'
     });
-    expect(result.valid).toEqual(false);
+    expect(result.valid).toStrictEqual(false);
     expect(
       result.details.find((a) => a.field === 'issuingState').valid
-    ).toEqual(false);
+    ).toStrictEqual(false);
 
     const optional1 = result.details.find((a) => a.field === 'optional1');
     expect(optional1).toMatchObject({
@@ -104,7 +104,7 @@ describe('parse TD1', () => {
     const documentNumberDetails = result.details.find(
       (d) => d.field === 'documentNumber'
     );
-    expect(documentNumberDetails).toEqual({
+    expect(documentNumberDetails).toStrictEqual({
       label: 'Document number',
       field: 'documentNumber',
       value: 'D23145890124',
@@ -118,8 +118,8 @@ describe('parse TD1', () => {
       start: 5,
       end: 18
     });
-    expect(result.fields.documentNumber).toEqual('D23145890124');
-    expect(result.fields.documentNumberCheckDigit).toEqual('0');
+    expect(result.fields.documentNumber).toStrictEqual('D23145890124');
+    expect(result.fields.documentNumberCheckDigit).toStrictEqual('0');
 
     const documentNumberCheckDigitDetails = result.details.find(
       (d) => d.field === 'documentNumberCheckDigit'
@@ -130,5 +130,73 @@ describe('parse TD1', () => {
       end: 19,
       value: '0'
     });
+  });
+
+  it('Not filled nationality example', () => {
+    const MRZ = [
+      'I<UTOD231458907ABC<<<<<<<<<<<<',
+      '7408122F1204159<<<<<<<<<<<<<<1',
+      'ERIKSSON<<ANNA<MARIA<<<<<<<<<<'
+    ];
+
+    const result = parse(MRZ);
+    expect(result.details.filter((a) => !a.valid)).toHaveLength(1);
+    expect(result.fields).toStrictEqual({
+      firstName: 'ANNA MARIA',
+      lastName: 'ERIKSSON',
+      nationality: '',
+      issuingState: null,
+      documentCode: 'I',
+      documentNumber: 'D23145890',
+      documentNumberCheckDigit: '7',
+      birthDate: '740812',
+      birthDateCheckDigit: '2',
+      expirationDate: '120415',
+      expirationDateCheckDigit: '9',
+      sex: 'female',
+      optional1: 'ABC',
+      optional2: '',
+      compositeCheckDigit: '1'
+    });
+  });
+
+  it('digits in names', () => {
+    const MRZ = [
+      'I<UTOD23145890<1240<XYZ<<<<<<<',
+      '7408122F1204159UTO<<<<<<<<<<<8',
+      'KOZLOVSKA8<<L7DMILA<PETROVNA<<'
+    ];
+    const result = parse(MRZ);
+    expect(result.fields.firstName).toStrictEqual('L7DMILA PETROVNA');
+    expect(result.fields.lastName).toStrictEqual('KOZLOVSKA8');
+  });
+
+  it('space in document number', () => {
+    const MRZ = [
+      'I<UTO592988362<0804<<<<<<<<<<<',
+      '7408122F1204159UTO<<<<<<<<<<<8',
+      'ERIKSSON<<ANNA<MARIA<<<<<<<<<<'
+    ];
+    const result = parse(MRZ);
+    expect(result.fields.documentNumber).toStrictEqual('592988362080');
+    expect(result.fields.documentNumberCheckDigit).toStrictEqual('4');
+  });
+
+  it('empty expiration date', () => {
+    const MRZ = [
+      'PNRUSAAAAAAA<<AAAAAA<AAAAAAAAAA<<<<<<<<<<<<<',
+      '1111111113RUS0202022M<<<<<<<1111111111111<14',
+    ];
+    const result = parse(MRZ);
+    expect(result.valid).toStrictEqual(true);
+  });
+
+  it('zero in nationality', () => {
+    const MRZ = [
+      'IDROUAAAAAAAA<<AAAAAA<AAAAAA<<<<<<<<',
+      'C1111111<1R0U1111111M111111111111111',
+    ];
+    const result = parse(MRZ);
+    expect(result.fields.nationality).toStrictEqual('ROU');
   });
 });

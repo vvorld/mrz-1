@@ -20,7 +20,7 @@ const documentCodeTemplate = {
 const nationalityTemplate = {
   label: 'Nationality',
   field: 'nationality',
-  parser: require('../parsers/parseState')
+  parser: require('../parsers/parseNationality')
 };
 
 const sexTemplate = {
@@ -88,6 +88,11 @@ const bapConfigurationTemplate = {
   field: 'bapConfiguration'
 };
 
+const personalNumberTemplate = {
+  label: 'Personal number',
+  field: 'personalNumber'
+};
+
 module.exports = {
   documentNumberTemplate,
   documentNumberCheckDigitTemplate,
@@ -103,5 +108,6 @@ module.exports = {
   firstNameTemplate,
   lastNameTemplate,
   issuingStateTemplate,
-  bapConfigurationTemplate
+  bapConfigurationTemplate,
+  personalNumberTemplate
 };

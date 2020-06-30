@@ -3,12 +3,12 @@
 const parseDocumentCode = require('../parsers/parseDocumentCodeId');
 const parseOptional = require('../parsers/parseOptional');
 const parseDocumentNumberOptional = require('../parsers/parseDocumentNumberOptional');
+const parsePersonalNumberCheckDigit = require('../parsers/parsePersonalNumberCheckDigit');
 
 const {
   documentCodeTemplate,
   issuingStateTemplate,
   documentNumberTemplate,
-  documentNumberCheckDigitTemplate,
   birthDateTemplate,
   birthDateCheckDigitTemplate,
   sexTemplate,
@@ -34,6 +34,8 @@ module.exports = [
     end: 5
   }),
   Object.assign({}, documentNumberTemplate, {
+    label: 'Personal number',
+    field: 'personalNumber',
     line: 0,
     start: 5,
     end: 14,
@@ -50,7 +52,9 @@ module.exports = [
       }
     ]
   }),
-  Object.assign(documentNumberCheckDigitTemplate, {
+  {
+    label: 'Personal number check digit',
+    field: 'personalNumberCheckDigit',
     line: 0,
     start: 14,
     end: 15,
@@ -59,17 +63,13 @@ module.exports = [
         line: 0,
         start: 5,
         end: 14
-      },
-      {
-        line: 0,
-        start: 15,
-        end: 30
       }
-    ]
-  }),
+    ],
+    parser: parsePersonalNumberCheckDigit
+  },
   {
-    label: 'Optional field 1',
-    field: 'optional1',
+    label: 'Document number',
+    field: 'documentNumber',
     line: 0,
     start: 15,
     end: 30,

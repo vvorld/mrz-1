@@ -6,6 +6,7 @@ const parseDocumentCode = require('../parsers/swissDrivingLicense/parseDocumentC
 const parseIssuingState = require('../parsers/swissDrivingLicense/parseIssuingState');
 const parseNumber = require('../parsers/parseNumber');
 const checkSeparator = require('../parsers/swissDrivingLicense/checkSeparator');
+
 const {
   documentNumberTemplate,
   documentCodeTemplate,

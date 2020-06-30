@@ -12,7 +12,7 @@ describe('parse French National Id', () => {
     expect(result.format).toBe('FRENCH_NATIONAL_ID');
     // expect(result.valid).toEqual(true);
     expect(result.details.filter((a) => !a.valid)).toHaveLength(0);
-    expect(result.fields).toEqual({
+    expect(result.fields).toStrictEqual({
       documentCode: 'ID',
       issuingState: 'FRA',
       lastName: 'TEST NAME',
@@ -38,7 +38,7 @@ describe('parse French National Id', () => {
     expect(result.format).toBe('FRENCH_NATIONAL_ID');
     // expect(result.valid).toEqual(true);
     expect(result.details.filter((a) => !a.valid)).toHaveLength(0);
-    expect(result.fields).toEqual({
+    expect(result.fields).toStrictEqual({
       documentCode: 'ID',
       issuingState: 'FRA',
       lastName: 'BERTHIER',

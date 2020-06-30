@@ -1,24 +1,45 @@
 'use strict';
 
-const checkLines = require('./checkLines');
 const formats = require('../formats');
+
+const checkLines = require('./checkLines');
 const parsers = require('./parsers');
 
 function parseMRZ(lines) {
   lines = checkLines(lines);
   switch (lines.length) {
-    case 1:{
-      if (lines[0].match(/^D[1PN<]FRA/)) {
-        return parsers.FRENCH_DRIVING_LICENSE(lines);
+    case 1: {
+      if (lines[0].match(/^D[1PN<][0-9A-Z<]{27}[0-9]$/)) {
+        if (lines[0].match(/^D[1PN<]FRA/)) {
+          return parsers.FRENCH_DRIVING_LICENSE(lines);
+        }
+        if (lines[0].match(/^D[1PN<]EST/)) {
+          return parsers.ESTONIAN_DRIVING_LICENSE(lines);
+        }
+        if (lines[0].match(/^D[1PN<][A-Z<]{12}IRL/)) {
+          return parsers.IRELAND_DRIVING_LICENSE(lines);
+        }
+        if (lines[0].match(/^D[1PN<]NLD/)) {
+          return parsers.NETHERLANDS_DRIVING_LICENSE(lines);
+        }
+        if (lines[0].match(/^D[1PN<][0-9<]{27}[0-9]$/)) {
+          return parsers.CROATIA_DRIVING_LICENSE(lines);
+        }
+        throw new Error(
+          'unsupported country'
+        );
       }
       throw new Error(
-        'unrecognized document format. Input must match pattern /^D[1PN<]FRA/ (French Driving License)'
+        'unrecognized document format. Input must match pattern /^D[1PN<][0-9A-Z<]{27}[0-9]$/ (ISO-compliant driving licence)'
       );
     }
     case 2:
     case 3: {
       switch (lines[0].length) {
         case 30:
+          if (lines[0].match(/^[ACI].BWA/)) {
+            return parsers.BOTSWANA_TD1(lines);
+          }
           return parsers.TD1(lines);
         case 36: {
           if (lines[0].match(/^I.FRA/)) {

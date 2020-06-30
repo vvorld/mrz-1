@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = function parseDocumentNumber(source) {
-  // french driving license number
-  if (!source.match(/^[0-9]{2}[A-Z]{2}[0-9]{5}$/)) {
+  // eu driving license number
+  if (!source.match(/^[A-Z0-9]{10}$/)) {
     throw new Error(
       `invalid document number: ${source}.`
     );
