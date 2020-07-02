@@ -276,8 +276,6 @@ const states = {
   ZIM: 'Zimbabwe',
   DEU: 'Germany',
   AR: 'Argentina',
-  F8A: 'FRA alias',
-  FSP: 'ESP alias'
 };
 Object.freeze(states);
 module.exports = states;

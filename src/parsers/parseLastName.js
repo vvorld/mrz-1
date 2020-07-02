@@ -8,7 +8,7 @@ module.exports = function parseLastName(source) {
       value: '',
       start: 0,
       end: 2
-    }
+    };
   }
   const parsed = parseText(source.replace(/<{2}.*/, ''), /^[A-Z0-9<]+<*$/);
   return {
