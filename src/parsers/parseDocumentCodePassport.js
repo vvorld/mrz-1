@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function parseDocumentCodePassport(source) {
-  source = source.replace(/0/g, 'O')
+  source = source.replace(/0/g, 'O');
   const first = source.charAt(0);
   if (first !== 'P') {
     throw new Error(
