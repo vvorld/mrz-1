@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = function parseDate(value) {
+  value = value.replace(/[OU]/g, '0');
   if (!value.match(/^[0-9<]{4,6}$/)) {
     throw new Error(`invalid date: ${value}`);
   }
