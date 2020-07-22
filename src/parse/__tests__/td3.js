@@ -27,20 +27,20 @@ describe('parse TD3', () => {
       sex: 'female',
       expirationDate: '120415',
       expirationDateCheckDigit: '9',
-      personalNumber: 'ZE184226B',
-      personalNumberCheckDigit: '1',
+      optional1: 'ZE184226B',
+      optionalFieldCheckDigit: '1',
       birthDate: '740812',
       birthDateCheckDigit: '2',
       issuingState: null,
       compositeCheckDigit: '0'
     });
 
-    const personalNumberDetails = result.details.find(
-      (d) => d.field === 'personalNumber'
+    const optionalFieldDetails = result.details.find(
+      (d) => d.field === 'optional1'
     );
-    expect(personalNumberDetails).toStrictEqual({
-      label: 'Personal number',
-      field: 'personalNumber',
+    expect(optionalFieldDetails).toStrictEqual({
+      label: 'Optional field 1',
+      field: 'optional1',
       value: 'ZE184226B',
       valid: true,
       ranges: [{ line: 1, start: 28, end: 42, raw: 'ZE184226B<<<<<' }],
@@ -83,8 +83,8 @@ describe('parse TD3', () => {
       sex: 'female',
       expirationDate: '171031',
       expirationDateCheckDigit: '9',
-      personalNumber: '',
-      personalNumberCheckDigit: '<',
+      optional1: '',
+      optionalFieldCheckDigit: '<',
       compositeCheckDigit: '0'
     });
   });
@@ -113,8 +113,8 @@ describe('parse TD3', () => {
       sex: 'female',
       expirationDate: '120415',
       expirationDateCheckDigit: '9',
-      personalNumber: 'ZE184226B',
-      personalNumberCheckDigit: '1',
+      optional1: 'ZE184226B',
+      optionalFieldCheckDigit: '1',
       birthDate: '740812',
       birthDateCheckDigit: '2',
       issuingState: null,
