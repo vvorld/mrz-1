@@ -1,7 +1,7 @@
 'use strict';
 
 const parseDocumentCode = require('../parsers/parseDocumentCodePassport');
-const parsePersonalNumber = require('../parsers/parsePersonalNumber');
+const parseOptional = require('../parsers/parseOptional');
 const parsePersonalNumberCheckDigit = require('../parsers/parsePersonalNumberCheckDigit');
 
 const {
@@ -105,16 +105,16 @@ module.exports = [
     ]
   }),
   {
-    label: 'Personal number',
-    field: 'personalNumber',
+    label: 'Optional field 1',
+    field: 'optional1',
     line: 1,
     start: 28,
     end: 42,
-    parser: parsePersonalNumber
+    parser: parseOptional,
   },
   {
-    label: 'Personal number check digit',
-    field: 'personalNumberCheckDigit',
+    label: 'Optional field check digit',
+    field: 'optionalFieldCheckDigit',
     line: 1,
     start: 42,
     end: 43,
