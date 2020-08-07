@@ -10,7 +10,7 @@ const parseDocumentNumber = require('../parsers/euDrivingLicense/parseDocumentNu
 const {
   documentCodeTemplate,
   bapConfigurationTemplate,
-  issuingStateTemplate,
+  nationalityTemplate,
   documentNumberTemplate,
   // TODO find algorithm for checkDigit, ignore for now
   // documentNumberCheckDigitTemplate,
@@ -38,7 +38,7 @@ module.exports = [
     end: 14,
     parser: parseLastName
   }),
-  Object.assign({}, issuingStateTemplate, {
+  Object.assign({}, nationalityTemplate, {
     line: 0,
     start: 14,
     end: 17,
