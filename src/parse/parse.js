@@ -43,6 +43,9 @@ function parseMRZ(lines) {
           if (lines[0].match(/^[A-Z<]{2}MOZ/)) {
             return parsers.MOZAMBIQUE_TD1(lines);
           }
+          if (lines[0].match(/^IDMEX/)) {
+            return parsers.MEXICAN_ID_CARD(lines);
+          }
           return parsers.TD1(lines);
         case 36: {
           if (lines[0].match(/^I.FRA/)) {
