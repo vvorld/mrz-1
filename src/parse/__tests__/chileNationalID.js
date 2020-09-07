@@ -5,7 +5,7 @@ const parse = require('./../parse');
 describe('parse Chile National ID', () => {
   it('Chile ID - valid', () => {
     const data = [
-      'INCHL1000001750A01<<<<<<<<<<<<',
+      'IDCHL1000001750A01<<<<<<<<<<<<',
       '8302216F2302214CHL12749625<0<3',
       'FREDEZ<VIDAL<<MARCELA<CAROLINA',
     ];
@@ -16,7 +16,7 @@ describe('parse Chile National ID', () => {
       valid: true
     });
     expect(result.fields).toStrictEqual({
-      documentCode: 'IN',
+      documentCode: 'ID',
       issuingState: 'CHL',
       personalNumber: '100000175',
       personalNumberCheckDigit: '0',

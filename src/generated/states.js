@@ -264,6 +264,7 @@ const states = {
   "XCC": "Caribbean Community or one of its emissaries (CARICOM)",
   "XCO": "Common Market for Eastern and Southern Africa (COMESA)",
   "XEC": "Economic Community of West African States (ECOWAS)",
+  "XKS": "Kosovo",
   "XPO": "International Criminal Police Organization (INTERPOL)",
   "XOM": "Sovereign Military Order of Malta or one of its emissaries",
   "XXA": "Stateless person, as defined in Article 1 of the 1954 Convention Relating to the Status of Stateless Persons",
