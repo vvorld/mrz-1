@@ -46,7 +46,7 @@ function parseMRZ(lines) {
           if (lines[0].match(/^IDMEX/)) {
             return parsers.MEXICAN_ID_CARD(lines);
           }
-          if (lines[0].match(/^I.CHL/)) {
+          if (lines[0].match(/^IDCHL/)) {
             return parsers.CHILE_NATIONAL_ID(lines);
           }
           return parsers.TD1(lines);
