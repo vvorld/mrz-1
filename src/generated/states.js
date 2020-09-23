@@ -116,6 +116,7 @@ const states = {
   "JOR": "Jordan",
   "KAZ": "Kazakhstan",
   "KEN": "Kenya",
+  "KYA": "Kenya",
   "KIR": "Kiribati",
   "PRK": "Korea, Democratic People’s Republic of",
   "KOR": "Korea, Republic of",

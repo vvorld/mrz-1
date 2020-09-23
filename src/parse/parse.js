@@ -49,6 +49,10 @@ function parseMRZ(lines) {
           if (lines[0].match(/^IDCHL/)) {
             return parsers.CHILE_NATIONAL_ID(lines);
           }
+          if (lines[0].match(/^IDKYA/)) {
+            return parsers.KENYA_ID_CARD(lines);
+          }
+
           return parsers.TD1(lines);
         case 36: {
           if (lines[0].match(/^I.FRA/)) {
