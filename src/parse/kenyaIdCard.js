@@ -6,7 +6,7 @@ const checkLines = require('./checkLines');
 const getResult = require('./getResult');
 const KenyaIdCardFields = require('./kenyaIdCardFields');
 
-module.exports = function parseMexicanIdCard(lines) {
+module.exports = function parseKenyaCard(lines) {
   lines = checkLines(lines);
   if (lines.length !== 3) {
     throw new Error(
