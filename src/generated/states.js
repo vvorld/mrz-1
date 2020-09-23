@@ -119,6 +119,7 @@ const states = {
   "KIR": "Kiribati",
   "PRK": "Korea, Democratic People’s Republic of",
   "KOR": "Korea, Republic of",
+  "XKS": "Kosovo",
   "KWT": "Kuwait",
   "KGZ": "Kyrgyzstan",
   "LAO": "Lao People’s Democratic Republic",
