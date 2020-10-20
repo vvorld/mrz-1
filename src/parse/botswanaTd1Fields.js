@@ -37,20 +37,20 @@ module.exports = [
     label: 'Personal number',
     field: 'personalNumber',
     line: 0,
-    start: 5,
-    end: 14,
+    start: 15,
+    end: 30,
     related: [
+      {
+        line: 0,
+        start: 5,
+        end: 14
+      },
       {
         line: 0,
         start: 14,
         end: 15
-      },
-      {
-        line: 0,
-        start: 15,
-        end: 30
       }
-    ]
+    ],
   }),
   {
     label: 'Personal number check digit',
@@ -71,18 +71,18 @@ module.exports = [
     label: 'Document number',
     field: 'documentNumber',
     line: 0,
-    start: 15,
-    end: 30,
+    start: 5,
+    end: 14,
     related: [
-      {
-        line: 0,
-        start: 5,
-        end: 14
-      },
       {
         line: 0,
         start: 14,
         end: 15
+      },
+      {
+        line: 0,
+        start: 15,
+        end: 30
       }
     ],
     parser: parseDocumentNumberOptional
