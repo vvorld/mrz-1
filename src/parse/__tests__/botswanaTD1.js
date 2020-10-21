@@ -18,9 +18,9 @@ describe('parse BOTSWANA_TD1', () => {
     expect(result.fields).toStrictEqual({
       documentCode: 'AC',
       issuingState: 'BWA',
-      personalNumber: 'S1690000',
+      personalNumber: '618888104',
       personalNumberCheckDigit: '8',
-      documentNumber: '618888104',
+      documentNumber: 'S1690000',
       birthDate: '661121',
       birthDateCheckDigit: '5',
       sex: 'female',
