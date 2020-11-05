@@ -13,6 +13,7 @@ const parseBotswanaTD1 = require('./botswanaTD1');
 const parseCroatiaDrivingLicense = require('./croatiaDrivingLicense');
 const parseMozambiqueTD1 = require('./mozambiqueTD1');
 const parseMexicanIdCard = require('./mexicanIdCard');
+const parseGuatemalaTD1 = require('./guatemalaTD1');
 
 module.exports = {
   TD1: parseTD1,
@@ -28,4 +29,5 @@ module.exports = {
   CROATIA_DRIVING_LICENSE: parseCroatiaDrivingLicense,
   MOZAMBIQUE_TD1: parseMozambiqueTD1,
   MEXICAN_ID_CARD: parseMexicanIdCard,
+  GUATEMALA_TD1: parseGuatemalaTD1,
 };

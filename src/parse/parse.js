@@ -46,6 +46,9 @@ function parseMRZ(lines) {
           if (lines[0].match(/^IDMEX/)) {
             return parsers.MEXICAN_ID_CARD(lines);
           }
+          if (lines[0].match(/^I.GTM/)) {
+            return parsers.GUATEMALA_TD1(lines);
+          }
           return parsers.TD1(lines);
         case 36: {
           if (lines[0].match(/^I.FRA/)) {
