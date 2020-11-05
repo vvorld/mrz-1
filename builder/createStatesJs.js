@@ -10,10 +10,22 @@ const states = fs
 const statesObject = {};
 for (var state of states) {
   const split = state.split(' ');
-  statesObject[split[split.length - 1]] = split
-    .slice(0, split.length - 2)
-    .join(' ');
+  let key = split[split.length - 1];
+  if (key !== '_') {
+    statesObject[key] = split
+      .slice(0, split.length - 2)
+      .join(' ');
+  }
+  key = split[split.length - 2];
+  if (key !== '_') {
+    statesObject[key] = split
+      .slice(0, split.length - 2)
+      .join(' ');
+  }
 }
+statesObject.RKS = 'Kosovo';
+statesObject.ZIM = 'Zimbabwe';
+statesObject.DEU = 'Germany';
 
 var result = [];
 result.push("'use strict';");

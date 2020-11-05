@@ -53,6 +53,9 @@ function parseMRZ(lines) {
             return parsers.KENYA_ID_CARD(lines);
           }
 
+          if (lines[0].match(/^I.GTM/)) {
+            return parsers.GUATEMALA_TD1(lines);
+          }
           return parsers.TD1(lines);
         case 36: {
           if (lines[0].match(/^I.FRA/)) {

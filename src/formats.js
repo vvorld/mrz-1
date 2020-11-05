@@ -16,6 +16,7 @@ const formats = {
   MEXICAN_ID_CARD: 'MEXICAN_ID_CARD',
   CHILE_NATIONAL_ID: 'CHILE_NATIONAL_ID',
   KENYA_ID_CARD: 'KENYA_ID_CARD',
+  GUATEMALA_TD1: 'GUATEMALA_TD1'
 };
 Object.freeze(formats);
 

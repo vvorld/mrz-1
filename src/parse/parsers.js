@@ -15,6 +15,7 @@ const parseMozambiqueTD1 = require('./mozambiqueTD1');
 const parseMexicanIdCard = require('./mexicanIdCard');
 const parseChileNationalID = require('./chileNationalID');
 const parseKenyaIdCard = require('./kenyaIdCard');
+const parseGuatemalaTD1 = require('./guatemalaTD1');
 
 module.exports = {
   TD1: parseTD1,
@@ -32,4 +33,5 @@ module.exports = {
   MEXICAN_ID_CARD: parseMexicanIdCard,
   CHILE_NATIONAL_ID: parseChileNationalID,
   KENYA_ID_CARD: parseKenyaIdCard,
+  GUATEMALA_TD1: parseGuatemalaTD1,
 };
