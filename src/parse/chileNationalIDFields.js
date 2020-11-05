@@ -1,9 +1,9 @@
 'use strict';
 
 const parseDocumentCode = require('../parsers/parseDocumentCodeId');
-const parseOptional = require('../parsers/parseOptional');
-const parseDocumentNumberOptional = require('../parsers/parseDocumentNumberOptional');
+const parsePersonalNumber = require('../parsers/parsePersonalNumber');
 const parsePersonalNumberCheckDigit = require('../parsers/parsePersonalNumberCheckDigit');
+const parseDocumentNumberOptional = require('../parsers/parseDocumentNumberOptional');
 
 const {
   documentCodeTemplate,
@@ -17,7 +17,8 @@ const {
   nationalityTemplate,
   compositeCheckDigitTemplate,
   lastNameTemplate,
-  firstNameTemplate
+  firstNameTemplate,
+  personalNumberTemplate,
 } = require('./fieldTemplates');
 const createFieldParser = require('./createFieldParser');
 
@@ -33,43 +34,7 @@ module.exports = [
     start: 2,
     end: 5
   }),
-  Object.assign({}, documentNumberTemplate, {
-    label: 'Personal number',
-    field: 'personalNumber',
-    line: 0,
-    start: 15,
-    end: 30,
-    related: [
-      {
-        line: 0,
-        start: 5,
-        end: 14
-      },
-      {
-        line: 0,
-        start: 14,
-        end: 15
-      }
-    ],
-  }),
-  {
-    label: 'Personal number check digit',
-    field: 'personalNumberCheckDigit',
-    line: 0,
-    start: 14,
-    end: 15,
-    related: [
-      {
-        line: 0,
-        start: 5,
-        end: 14
-      }
-    ],
-    parser: parsePersonalNumberCheckDigit
-  },
-  {
-    label: 'Document number',
-    field: 'documentNumber',
+  Object.assign({}, personalNumberTemplate, {
     line: 0,
     start: 5,
     end: 14,
@@ -83,6 +48,46 @@ module.exports = [
         line: 0,
         start: 15,
         end: 30
+      }
+    ],
+    parser: parsePersonalNumber,
+  }),
+  {
+    label: 'Personal number check digit',
+    field: 'personalNumberCheckDigit',
+    line: 0,
+    start: 14,
+    end: 15,
+    related: [
+      {
+        line: 0,
+        start: 5,
+        end: 14
+      },
+      {
+        line: 0,
+        start: 15,
+        end: 30
+      }
+    ],
+    parser: parsePersonalNumberCheckDigit,
+  },
+  {
+    label: 'Optional field 1',
+    field: 'optional1',
+    line: 0,
+    start: 15,
+    end: 30,
+    related: [
+      {
+        line: 0,
+        start: 5,
+        end: 14
+      },
+      {
+        line: 0,
+        start: 14,
+        end: 15
       }
     ],
     parser: parseDocumentNumberOptional
@@ -131,14 +136,11 @@ module.exports = [
     start: 15,
     end: 18
   }),
-  {
-    label: 'Optional field 2',
-    field: 'optional2',
+  Object.assign({}, documentNumberTemplate, {
     line: 1,
     start: 18,
     end: 29,
-    parser: parseOptional
-  },
+  }),
   Object.assign({}, compositeCheckDigitTemplate, {
     line: 1,
     start: 29,

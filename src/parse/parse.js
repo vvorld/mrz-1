@@ -46,6 +46,13 @@ function parseMRZ(lines) {
           if (lines[0].match(/^IDMEX/)) {
             return parsers.MEXICAN_ID_CARD(lines);
           }
+          if (lines[0].match(/^IDCHL/)) {
+            return parsers.CHILE_NATIONAL_ID(lines);
+          }
+          if (lines[0].match(/^IDKYA/)) {
+            return parsers.KENYA_ID_CARD(lines);
+          }
+
           if (lines[0].match(/^I.GTM/)) {
             return parsers.GUATEMALA_TD1(lines);
           }
