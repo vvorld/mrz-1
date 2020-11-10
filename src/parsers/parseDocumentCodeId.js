@@ -1,23 +1,24 @@
 'use strict';
 
 module.exports = function parseDocumentCodeId(source) {
-  const first = source.charAt(0);
-  if (first !== 'A' && first !== 'C' && first !== 'I' && first !== 'R') {
+  const [firstLetter, secondLetter] = source;
+  const allowedFirstLetters = new Set(['A', 'C', 'I', 'R', 'T']);
+  if (!allowedFirstLetters.has(firstLetter)) {
     throw new Error(
-      `invalid document code: ${source}. First character must be A, C, R or I`
+      `invalid document code: ${source}. First character must be A, C, R, I or T`
     );
   }
 
-  const second = source.charAt(1);
-  if (second === 'V') {
+  const forbiddenSecondsLetters = new Set(['V']);
+  if (forbiddenSecondsLetters.has(secondLetter)) {
     throw new Error(
       `invalid document code: ${source}. Second character may not be V`
     );
   }
 
-  if (second === '<') {
+  if (secondLetter === '<') {
     return {
-      value: first,
+      value: firstLetter,
       start: 0,
       end: 1
     };
