@@ -232,12 +232,15 @@ const states = {
   "KZ": "Kazakhstan",
   "KEN": "Kenya",
   "KE": "Kenya",
+  "KYA": "Kenya",
   "KIR": "Kiribati",
   "KI": "Kiribati",
   "PRK": "Korea, Democratic People’s Republic of",
   "KP": "Korea, Democratic People’s Republic of",
   "KOR": "Korea, Republic of",
   "KR": "Korea, Republic of",
+  "XKS": "Kosovo",
+  "XK": "Kosovo",
   "KWT": "Kuwait",
   "KW": "Kuwait",
   "KGZ": "Kyrgyzstan",
@@ -523,7 +526,8 @@ const states = {
   "XXX": "Refugee, other than as defined under the code XXB above XXC Person of unspecified nationality, for whom issuing State does not consider it necessary to specify any of the codes XXA, XXB or XXC above, whatever that person’s status may be. This category may include a person who is neither stateless nor a refugee but who is of unknown nationality and legally residing in the State of issue.",
   "RKS": "Kosovo",
   "ZIM": "Zimbabwe",
-  "DEU": "Germany"
+  "DEU": "Germany",
+  "ROM": "Romania"
 };
 Object.freeze(states);
 module.exports = states;
