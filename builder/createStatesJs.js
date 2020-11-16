@@ -26,6 +26,7 @@ for (var state of states) {
 statesObject.RKS = 'Kosovo';
 statesObject.ZIM = 'Zimbabwe';
 statesObject.DEU = 'Germany';
+statesObject.ROM = 'Romania';
 
 var result = [];
 result.push("'use strict';");
