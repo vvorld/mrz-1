@@ -30,4 +30,36 @@ describe('parse KENYA_ID_CARD', () => {
       issueDate: '120222',
     });
   });
+
+  it.each([
+    [
+      [
+        'IDKYA2485072664<<3981<<<<<3981',
+        '9710038M1810150<B037622929I<<1',
+        'ASFOWF<JSFIVQ<RONTWO<<<<<<<<<<'
+      ], '4', '8', '1'
+    ],
+    [
+      [
+        'IDKYA2498088566<<22D1<<<<<4771',
+        '0106164M1907243<B038344903X<<0',
+        'ASFOWF<JSFIVQ<RONTWO<<<<<<<<<<'
+      ], '6', '4', '0'
+    ],
+    [
+      [
+        'IDKYA2304830190<<414<<<<<<<471',
+        '9408300F1209280<B030857540L<<9',
+        'ASFOWF<JSFIVQ<RONTWO<<<<<<<<<<'
+      ], '0', '0', '9'
+    ]
+
+  ])('check digits for KEN ID', (data, documentNumberCheckDigit, birthDateCheckDigit, compositeCheckDigit) => {
+    const result = parse(data);
+    expect(result.fields).toMatchObject({
+      documentNumberCheckDigit,
+      birthDateCheckDigit,
+      compositeCheckDigit,
+    });
+  });
 });

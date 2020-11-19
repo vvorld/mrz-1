@@ -123,23 +123,8 @@ module.exports = [
     end: 30,
     related: [
       {
-        line: 0,
-        start: 5,
-        end: 30
-      },
-      {
         line: 1,
         start: 0,
-        end: 7
-      },
-      {
-        line: 1,
-        start: 8,
-        end: 15
-      },
-      {
-        line: 1,
-        start: 17,
         end: 29
       }
     ]
